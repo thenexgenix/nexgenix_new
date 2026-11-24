@@ -1,0 +1,432 @@
+/*
+ * About Us page styles
+ *
+ * This file is a CSS Module so the page owns its visual rules instead of
+ * adding another several hundred lines to the app-wide stylesheet. The
+ * selectors stay global intentionally because the component already uses
+ * descriptive class names and HomeFooter still consumes shared global styles.
+ */
+
+/* Page canvas and hero */
+.about-page {
+  overflow: hidden;
+  background: #19032a;
+}
+
+.about-hero {
+  position: relative;
+  min-height: 900px;
+  padding-top: 285px;
+}
+
+.about-hero__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(420px, 1fr);
+  gap: 72px;
+  align-items: center;
+  min-height: 570px;
+}
+
+.about-hero__copy {
+  position: relative;
+  z-index: 2;
+  padding: 50px 0 48px;
+}
+
+.about-hero__copy h1 {
+  max-width: 700px;
+  margin: 0;
+  color: #fff;
+  font-family: "OMEGLE", Inter, Arial, sans-serif;
+  font-size: clamp(3.6rem, 5.4vw, 6.2rem);
+  font-weight: 400;
+  line-height: 1.18;
+  letter-spacing: -0.045em;
+}
+
+.about-hero__copy p {
+  max-width: 680px;
+  margin: 42px 0 0;
+  color: #e4dce6;
+  font-size: clamp(1.15rem, 1.65vw, 1.8rem);
+  line-height: 1.48;
+}
+
+.about-hero__image {
+  position: relative;
+  z-index: 2;
+  min-height: 520px;
+  border-radius: 26px;
+}
+
+.about-hero__bar {
+  position: absolute;
+  right: 0;
+  bottom: 64px;
+  left: 0;
+  height: 215px;
+  background: linear-gradient(90deg, rgba(186, 150, 195, 0.18), rgba(244, 237, 245, 0.88) 44%, rgba(244, 237, 245, 0.82) 57%, rgba(186, 150, 195, 0.18));
+  opacity: 0.8;
+}
+
+/* Reusable image placeholders: swap in real assets without changing layout. */
+.about-placeholder {
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  color: rgba(255, 255, 255, 0.72);
+  background: radial-gradient(circle at 50% 25%, rgba(142, 55, 255, 0.28), transparent 38%), linear-gradient(145deg, #2b1a37, #1c0d2b 72%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04), 0 18px 50px rgba(0, 0, 0, 0.2);
+}
+
+.about-placeholder span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.about-hero__image::before {
+  position: absolute;
+  inset: 14% 12%;
+  content: "";
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 48% 52% 42% 58%;
+  background:
+    radial-gradient(circle at 34% 34%, rgba(255, 255, 255, 0.8) 0 3%, transparent 3.5%),
+    radial-gradient(circle at 67% 63%, rgba(255, 255, 255, 0.55) 0 2%, transparent 2.5%),
+    linear-gradient(135deg, rgba(164, 87, 255, 0.7), rgba(31, 12, 57, 0.15));
+  box-shadow: 0 0 70px rgba(170, 86, 255, 0.32);
+  transform: rotate(-8deg);
+}
+
+.about-hero__image::after {
+  position: absolute;
+  right: 12%;
+  bottom: 12%;
+  width: 42%;
+  height: 42%;
+  content: "";
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.8) 0 2%, transparent 2.5%), rgba(115, 49, 184, 0.35);
+}
+
+/* CEO profile card */
+.about-ceo-card__portrait::before,
+.about-person-card__portrait::before {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  width: 26%;
+  aspect-ratio: 1;
+  content: "";
+  border-radius: 50%;
+  background: linear-gradient(145deg, #f3c3a6, #a86d72);
+  box-shadow: 0 -12px 0 5px #20112d;
+  transform: translateX(-50%);
+}
+
+.about-ceo-card__portrait::after,
+.about-person-card__portrait::after {
+  position: absolute;
+  right: 25%;
+  bottom: 0;
+  left: 25%;
+  height: 48%;
+  content: "";
+  border-radius: 48% 48% 0 0;
+  background: linear-gradient(145deg, #5f3d87, #241332);
+}
+
+.about-leadership {
+  position: relative;
+  z-index: 2;
+  padding-top: 58px;
+}
+
+.about-ceo-card {
+  display: grid;
+  grid-template-columns: 380px minmax(0, 1fr);
+  gap: 74px;
+  align-items: center;
+  padding: 54px 70px 56px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 28px;
+  background: radial-gradient(circle at 50% 100%, rgba(42, 66, 170, 0.2), transparent 55%), rgba(23, 4, 39, 0.7);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.18);
+}
+
+.about-ceo-card__portrait {
+  width: 310px;
+  height: 310px;
+  justify-self: center;
+  border: 10px solid rgba(255, 255, 255, 0.92);
+  border-radius: 50%;
+  box-shadow: 0 0 0 24px rgba(211, 201, 212, 0.55), 0 0 0 37px rgba(255, 255, 255, 0.92);
+}
+
+.about-ceo-card__portrait span {
+  font-size: 0.82rem;
+}
+
+.about-ceo-card__copy h2 {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(1.8rem, 2.4vw, 2.5rem);
+}
+
+.about-ceo-card__role {
+  margin: 8px 0 24px;
+  color: #fff;
+  font-size: clamp(1.1rem, 1.4vw, 1.5rem);
+}
+
+.about-ceo-card__copy > p:not(.about-ceo-card__role) {
+  max-width: 850px;
+  margin: 0;
+  color: #e4dce6;
+  font-size: clamp(0.98rem, 1.15vw, 1.2rem);
+  line-height: 1.42;
+}
+
+.about-ceo-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 30px;
+}
+
+.about-ceo-card__actions a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 0 25px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 999px;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.14);
+  box-shadow: inset 0 0 18px rgba(255, 255, 255, 0.08);
+  transition: background 180ms ease, transform 180ms ease;
+}
+
+.about-ceo-card__actions a:hover,
+.about-view-all:hover {
+  background: rgba(255, 255, 255, 0.22);
+  transform: translateY(-2px);
+}
+
+/* Team grids and cards */
+.about-team {
+  padding-top: 160px;
+}
+
+.about-section-title {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(2.7rem, 4.4vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  letter-spacing: -0.045em;
+}
+
+.about-section-title--members {
+  margin-top: 196px;
+}
+
+.about-people-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 80px 74px;
+  margin-top: 72px;
+}
+
+.about-person-card {
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 23px;
+  background: #291735;
+  box-shadow: 0 0 20px rgba(213, 147, 255, 0.08);
+}
+
+.about-person-card__portrait {
+  position: relative;
+  height: 370px;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: radial-gradient(circle at 50% 26%, rgba(142, 55, 255, 0.3), transparent 28%), linear-gradient(145deg, #392648, #1b0a2b 82%);
+}
+
+.about-person-card__portrait span {
+  position: relative;
+  z-index: 1;
+}
+
+.about-person-card__caption {
+  padding: 20px 26px 23px;
+  background: linear-gradient(180deg, #1d0a2c, #19032a);
+}
+
+.about-person-card__caption h3 {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(1.1rem, 1.4vw, 1.5rem);
+}
+
+.about-person-card__caption p {
+  margin: 7px 0 0;
+  color: #fff;
+  font-size: clamp(1rem, 1.25vw, 1.3rem);
+}
+
+.about-view-all {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  width: max-content;
+  min-width: 218px;
+  min-height: 64px;
+  margin: 78px auto 0;
+  padding: 0 26px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 999px;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 16px rgba(255, 255, 255, 0.08);
+  font-size: 1.3rem;
+  font-weight: 700;
+  transition: background 180ms ease, transform 180ms ease;
+}
+
+.about-view-all span {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: #19032a;
+  background: #fff;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.75);
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+/* Mission & Vision puzzle grid */
+.about-mission {
+  padding: 260px 0 210px;
+  background: radial-gradient(circle at 35% 50%, rgba(86, 30, 124, 0.22), transparent 35%);
+}
+
+.about-eyebrow {
+  display: block;
+  width: max-content;
+  margin: 0 auto;
+  padding: 12px 28px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  color: #e4dce6;
+  background: rgba(255, 255, 255, 0.11);
+  font-size: 1.1rem;
+}
+
+.about-mission > .page-shell > h2 {
+  margin: 50px 0 125px;
+  color: #fff;
+  font-size: clamp(3.7rem, 6.2vw, 7rem);
+  line-height: 0.95;
+  text-align: center;
+  letter-spacing: -0.055em;
+}
+
+.mission-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 42px 0;
+  align-items: start;
+}
+
+.mission-card {
+  position: relative;
+  z-index: 1;
+  min-height: 430px;
+  padding: 84px 55px 64px;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  background: rgba(48, 27, 59, 0.82);
+  clip-path: polygon(18% 0, 40% 0, 44% 8%, 56% 8%, 60% 0, 82% 0, 82% 7%, 100% 7%, 100% 30%, 94% 35%, 94% 65%, 100% 70%, 100% 93%, 82% 93%, 78% 100%, 60% 100%, 56% 92%, 44% 92%, 40% 100%, 18% 100%, 18% 93%, 0 93%, 0 70%, 6% 65%, 6% 35%, 0 30%, 0 7%, 18% 7%);
+}
+
+.mission-card::before {
+  position: absolute;
+  inset: 7px;
+  z-index: -1;
+  content: "";
+  background: rgba(48, 27, 59, 0.86);
+  clip-path: inherit;
+}
+
+.mission-card h3 {
+  margin: 0 0 24px;
+  color: #fff;
+  font-size: clamp(1.1rem, 1.35vw, 1.45rem);
+  line-height: 1.15;
+}
+
+.mission-card ul {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding-left: 22px;
+  color: #f0eaf1;
+  font-size: clamp(0.94rem, 1.1vw, 1.2rem);
+  line-height: 1.28;
+}
+
+.mission-card--golden { grid-column: 5 / 7; }
+.mission-card--event { grid-column: 1 / 3; grid-row: 2; }
+.mission-card--excellence { grid-column: 3 / 5; grid-row: 2; }
+.mission-card--society { grid-column: 5 / 7; grid-row: 2; }
+.mission-card--event-mission { grid-column: 1 / 3; grid-row: 3; }
+.mission-card--vision { grid-column: 3 / 5; grid-row: 3; }
+
+/* Breakpoints keep the reference composition legible on smaller screens. */
+@media (max-width: 1100px) {
+  .about-hero__inner { grid-template-columns: 1fr 0.9fr; gap: 30px; }
+  .about-ceo-card { grid-template-columns: 280px minmax(0, 1fr); gap: 44px; padding-inline: 40px; }
+  .about-ceo-card__portrait { width: 230px; height: 230px; }
+  .mission-card { padding-inline: 32px; }
+}
+
+@media (max-width: 760px) {
+  .about-hero { min-height: auto; padding-top: 190px; padding-bottom: 70px; }
+  .about-hero__inner { grid-template-columns: 1fr; min-height: 0; }
+  .about-hero__copy { padding: 30px 0 0; }
+  .about-hero__copy h1 { font-size: clamp(3rem, 13vw, 5rem); }
+  .about-hero__copy p { margin-top: 26px; font-size: 1.1rem; }
+  .about-hero__image { min-height: 310px; }
+  .about-hero__bar { bottom: 0; height: 90px; }
+  .about-leadership { padding-top: 60px; }
+  .about-ceo-card { grid-template-columns: 1fr; gap: 48px; padding: 52px 24px 34px; }
+  .about-ceo-card__portrait { width: 190px; height: 190px; }
+  .about-ceo-card__copy { text-align: left; }
+  .about-ceo-card__actions a { width: 100%; justify-content: center; font-size: 0.88rem; }
+  .about-team { padding-top: 110px; }
+  .about-section-title--members { margin-top: 140px; }
+  .about-people-grid { grid-template-columns: 1fr; gap: 24px; margin-top: 42px; }
+  .about-person-card__portrait { height: 300px; }
+  .about-view-all { margin-top: 42px; }
+  .about-mission { padding: 150px 0 120px; }
+  .about-mission > .page-shell > h2 { margin: 36px 0 64px; font-size: clamp(3.2rem, 15vw, 5rem); }
+  .mission-grid { display: flex; flex-direction: column; gap: 24px; }
+  .mission-card { min-height: 0; width: 100%; padding: 66px 36px 56px; }
+  .mission-card--golden, .mission-card--event, .mission-card--excellence, .mission-card--society, .mission-card--event-mission, .mission-card--vision { grid-column: auto; grid-row: auto; }
+}

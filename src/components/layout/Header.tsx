@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import "./Header.css";
 
 const navigationItems = [
     { label: "Home", href: "/" },
@@ -12,6 +13,8 @@ const navigationItems = [
     { label: "Our Events", href: "/events" },
     { label: "About Us", href: "/about" },
 ];
+
+const applyLinkClassName = "apply-btn";
 
 export default function Header() {
     const pathname = usePathname();
@@ -65,9 +68,9 @@ export default function Header() {
 
                     <Link
                         href="/apply"
-                        className="flex h-10 w-[214px] items-center justify-center rounded-full border border-white/25 bg-black/[0.01] px-4 text-[19px] font-bold leading-6 text-white shadow-[0_0_4px_rgba(255,255,255,0.25)] backdrop-blur-[18px] transition hover:border-white/50 hover:bg-white/10"
+                        className={applyLinkClassName}
                     >
-                        Apply for NexIntern
+                        <span className="apply-btn__text">Apply for NexIntern</span>
                     </Link>
                 </div>
 
@@ -104,9 +107,9 @@ export default function Header() {
                         <Link
                             href="/apply"
                             onClick={() => setMenuOpen(false)}
-                            className="rounded-full border border-white/25 bg-white/10 px-5 py-3 text-center font-semibold text-white"
+                            className={applyLinkClassName}
                         >
-                            Apply for NexIntern
+                            <span className="apply-btn__text">Apply for NexIntern</span>
                         </Link>
                     </div>
                 </nav>

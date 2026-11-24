@@ -5,7 +5,16 @@ type ServiceIconProps = {
 };
 
 function ServiceIcon({ src }: ServiceIconProps) {
-    return <Image src={src} alt="" width={28} height={28} unoptimized />;
+    return (
+        <Image
+            src={src}
+            alt=""
+            width={28}
+            height={28}
+            className="h-7 w-7 shrink-0 object-contain"
+            unoptimized
+        />
+    );
 }
 
 const services = [
@@ -41,25 +50,28 @@ const services = [
 
 export default function ServicesSection() {
     return (
-        <section id="services" className="relative z-30 mx-auto flex min-h-[491px] w-full max-w-[1248px] flex-col pt-[60px]">
-            <div className="flex h-[124px] flex-col items-center gap-4">
+        <section
+            id="services"
+            className="home-services-section relative z-30 mx-auto flex w-full max-w-[1248px] flex-col"
+        >
+            <div className="home-services-heading flex flex-col items-center gap-4">
                 <div className="flex h-11 items-center rounded-full border border-white/20 bg-white/[0.06] px-5 text-sm text-white/80">
                     What We Offer
                 </div>
 
-                <h2 className="font-['Arial_Black'] text-5xl font-black tracking-tight text-white sm:text-6xl">
+                <h2 className="home-services-title font-['Arial_Black'] font-black tracking-tight text-white">
                     Our Services
                 </h2>
             </div>
 
-            <div className="mt-8 grid h-auto grid-cols-1 gap-5 sm:grid-cols-2 lg:h-[255px] lg:grid-cols-4">
+            <div className="home-services-grid grid h-auto grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
                 {services.map((service) => (
                     <article
                         key={service.title}
-                        className="flex min-h-[255px] flex-col rounded-2xl border border-white/20 bg-white/[0.08] p-6 backdrop-blur-md"
+                        className="home-glass-card home-service-card flex flex-col rounded-2xl p-6"
                     >
                         <div
-                            className={`flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br ${service.gradient}`}
+                            className={`home-service-icon flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${service.gradient}`}
                         >
                             <ServiceIcon src={service.icon} />
                         </div>
@@ -77,13 +89,16 @@ export default function ServicesSection() {
 
             <button
                 type="button"
-                className="mx-auto mt-8 flex h-12 items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 text-sm font-semibold text-white transition hover:bg-white/20"
+                className="home-see-more mx-auto flex h-12 items-center gap-2 rounded-full px-4 text-sm font-semibold text-white transition"
             >
                 See More
                 <span aria-hidden="true" className="text-lg leading-none">
                     {"\u2192"}
                 </span>
             </button>
+
+            <div className="home-services-separator home-services-separator--violet" aria-hidden="true" />
+            <div className="home-services-separator home-services-separator--violet" aria-hidden="true" />
         </section>
     );
 }

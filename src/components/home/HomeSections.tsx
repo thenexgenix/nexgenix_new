@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import ExpertiseAnimation from "@/components/home/ExpertiseAnimation";
+import LogoAnimation from "@/components/home/LogoAnimation";
+import WorksCarousel from "@/components/home/WorksCarousel";
 
 const logos = [
   { src: "/assets/logos/ainbondu.svg", alt: "Ainbondu", className: "brand-logo brand-logo--ainbondu" },
@@ -48,13 +50,17 @@ function SectionIntro({ eyebrow, title, description }: { eyebrow?: string; title
 
 export function BrandSection() {
   return (
-    <section className="brand-section page-shell">
-      <SectionIntro title="Revolutionizing" description="the leading innovation hub" />
-      <div className="brand-stage" aria-label="NexGenix partner brands">
-        <div className="brand-grid" />
-        {logos.map((logo) => (
-          <Image key={logo.alt} src={logo.src} alt={logo.alt} width={240} height={130} className={logo.className} unoptimized />
-        ))}
+    <section className="brand-section">
+      <div className="page-shell">
+        <SectionIntro title="Revolutionizing" description="the leading innovation hub" />
+        <div className="brand-stage" aria-label="NexGenix partner brands">
+          <div className="brand-stage__glow" aria-hidden="true" />
+          <div className="brand-grid" />
+          <LogoAnimation />
+          {logos.map((logo) => (
+            <Image key={logo.alt} src={logo.src} alt={logo.alt} width={240} height={130} className={logo.className} unoptimized />
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -80,22 +86,24 @@ function StoryArtwork({ kind }: { kind: (typeof stories)[number]["kind"] }) {
 
 export function StoriesSection() {
   return (
-    <section className="stories-section page-shell">
-      <SectionIntro title="Watch Our Stories" description="Experience innovation through video" />
-      <div className="stories-grid">
-        {stories.map((story) => (
-          <article className="story-card" key={story.title}>
-            <div className="story-media">
-              <StoryArtwork kind={story.kind} />
-              <span className="story-duration"><span>▣</span>{story.time}</span>
-              <button type="button" aria-label={`Play ${story.title}`} className="story-play"><Icon name="play" size={22} /></button>
-            </div>
-            <div className="story-meta">
-              <h3>{story.title}</h3>
-              <div><span><Icon name="eye" size={13} />{story.views} views</span><span><Icon name="volume" size={13} />HD Quality</span></div>
-            </div>
-          </article>
-        ))}
+    <section className="stories-section">
+      <div className="page-shell">
+        <SectionIntro title="Watch Our Stories" description="Experience innovation through video" />
+        <div className="stories-grid">
+          {stories.map((story) => (
+            <article className="story-card" key={story.title}>
+              <div className="story-media">
+                <StoryArtwork kind={story.kind} />
+                <span className="story-duration"><span>▣</span>{story.time}</span>
+                <button type="button" aria-label={`Play ${story.title}`} className="story-play"><Icon name="play" size={22} /></button>
+              </div>
+              <div className="story-meta">
+                <h3>{story.title}</h3>
+                <div><span><Icon name="eye" size={13} />{story.views} views</span><span><Icon name="volume" size={13} />HD Quality</span></div>
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -105,30 +113,30 @@ export function ExpertiseSection() {
   const bullets = ["Full-stack development expertise", "Modern frontend frameworks", "Scalable backend solutions", "Cross-platform mobile apps", "Design-first approach"];
 
   return (
-    <section className="expertise-section page-shell">
-      <div className="expertise-copy">
-        <Eyebrow>What We Do</Eyebrow>
-        <h2>Our Expertise</h2>
-        <h3>Powered by cutting-edge technologies</h3>
-        <p>We specialize in crafting exceptional digital experiences using industry-leading technologies. Our team masters both frontend and backend development, delivering comprehensive solutions that scale with your business needs.</p>
-        <p>From responsive web applications to cross-platform mobile solutions, we leverage modern frameworks and tools to build products that users love. Our expertise spans React, Node.js, Python, Laravel, Flutter, and more.</p>
-        <ul>{bullets.map((bullet) => <li key={bullet}><Icon name="check" size={15} />{bullet}</li>)}</ul>
+    <section className="expertise-section">
+      <div className="page-shell expertise-section__inner">
+        <div className="expertise-copy">
+          <Eyebrow>What We Do</Eyebrow>
+          <h2>Our Expertise</h2>
+          <h3>Powered by cutting-edge technologies</h3>
+          <p>We specialize in crafting exceptional digital experiences using industry-leading technologies. Our team masters both frontend and backend development, delivering comprehensive solutions that scale with your business needs.</p>
+          <p>From responsive web applications to cross-platform mobile solutions, we leverage modern frameworks and tools to build products that users love. Our expertise spans React, Node.js, Python, Laravel, Flutter, and more.</p>
+          <ul>{bullets.map((bullet) => <li key={bullet}><Icon name="check" size={15} />{bullet}</li>)}</ul>
+        </div>
+        <div className="expertise-visual"><ExpertiseAnimation /></div>
       </div>
-      <div className="expertise-visual"><ExpertiseAnimation /></div>
     </section>
   );
 }
 
 export function WorksSection() {
   return (
-    <section className="works-section page-shell">
-      <SectionIntro title="Our Works" />
-      <div className="works-showcase">
-        <div className="work-card work-card--side work-card--left"><div className="mock-site mock-site--green"><span /><span /><span /><span /></div></div>
-        <div className="work-card work-card--main"><div className="mock-site mock-site--government"><div className="mock-nav" /><div className="mock-copy" /><div className="mock-building" /><div className="mock-green-band" /></div></div>
-        <div className="work-card work-card--side work-card--right"><div className="mock-site mock-site--vr"><div className="mock-vr-head" /><span /><span /><span /></div></div>
+    <section className="works-section">
+      <div className="page-shell">
+        <SectionIntro title="Our Works" />
+        <WorksCarousel />
+        <Link href="/work" className="outline-button">See More <span>→</span></Link>
       </div>
-      <Link href="/work" className="outline-button">See More <span>→</span></Link>
     </section>
   );
 }
@@ -144,15 +152,17 @@ const team = [
 
 export function TeamSection() {
   return (
-    <section className="team-section page-shell">
-      <SectionIntro eyebrow="Our Team" title="Need to change the title Interns" description="NEED to change the sub title" />
-      <div className="team-grid">
-        {team.map(([id, name, role, kind]) => (
-          <article className="team-card" key={id}>
-            <div className={`team-portrait ${kind}`}><span className="team-face" /><span className="team-shoulders" /><span className="team-id">{id}</span><button type="button" aria-label={`Play introduction for ${name}`} className="team-play"><Icon name="play" size={19} /></button></div>
-            <div className="team-info"><h3>{name}</h3><p>{role}</p></div>
-          </article>
-        ))}
+    <section className="team-section">
+      <div className="page-shell">
+        <SectionIntro eyebrow="Our Team" title="Need to change the title Interns" description="NEED to change the sub title" />
+        <div className="team-grid">
+          {team.map(([id, name, role, kind]) => (
+            <article className="team-card" key={id}>
+              <div className={`team-portrait ${kind}`}><span className="team-face" /><span className="team-shoulders" /><span className="team-id">{id}</span><button type="button" aria-label={`Play introduction for ${name}`} className="team-play"><Icon name="play" size={19} /></button></div>
+              <div className="team-info"><h3>{name}</h3><p>{role}</p></div>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -160,13 +170,15 @@ export function TeamSection() {
 
 export function ContactSection() {
   return (
-    <section className="contact-section page-shell">
-      <div className="contact-card">
-        <h2>Grow Your Brand Fast<br />with Our Digital Marketing<br />Expertise</h2>
-        <p>Ready to speak with a marketing expert? Give us a ring</p>
-        <div className="contact-actions">
-          <a href="tel:+8801897015708" className="contact-phone"><Icon name="phone" size={20} /><span><small>Phone Number</small><strong>+8801897-015708</strong></span></a>
-          <Link href="/contact" className="contact-consultation">Get Free Consultation <Icon name="send" size={18} /></Link>
+    <section className="contact-section">
+      <div className="page-shell">
+        <div className="contact-card">
+          <h2>Grow Your Brand Fast<br />with Our Digital Marketing<br />Expertise</h2>
+          <p>Ready to speak with a marketing expert? Give us a ring</p>
+          <div className="contact-actions">
+            <a href="tel:+8801897015708" className="contact-phone"><Icon name="phone" size={20} /><span><small>Phone Number</small><strong>+8801897-015708</strong></span></a>
+            <Link href="/contact" className="contact-consultation">Get Free Consultation <Icon name="send" size={18} /></Link>
+          </div>
         </div>
       </div>
     </section>
@@ -176,16 +188,30 @@ export function ContactSection() {
 export function HomeFooter() {
   return (
     <footer className="home-footer">
-      <div className="footer-wave" />
-      <div className="page-shell footer-inner">
-        <Image src="/assets/nexgenix-logo.svg" alt="NexGenix" width={180} height={130} className="footer-logo" unoptimized />
-        <p className="footer-tagline">Riding the wave of tomorrow</p>
-        <div className="footer-columns">
-          <div><h3>Company</h3><Link href="/about">About</Link><Link href="/careers">Careers</Link><Link href="/work">Press</Link><Link href="/partners">Partners</Link></div>
-          <div><h3>Resources</h3><Link href="/docs">Documentation</Link><Link href="/tutorials">Tutorials</Link><Link href="/support">Support</Link><Link href="/status">Status</Link></div>
-          <div><h3>Connect</h3><div className="social-links"><a href="#facebook" aria-label="Facebook">f</a><a href="#twitter" aria-label="Twitter">t</a><a href="#instagram" aria-label="Instagram">◎</a><a href="#linkedin" aria-label="LinkedIn">in</a><a href="#github" aria-label="GitHub">⌘</a></div></div>
+      <div className="footer-wave" aria-hidden="true">
+        <svg className="footer-wave__svg" viewBox="0 0 1440 72" preserveAspectRatio="none">
+          <g transform="rotate(180 720 36)">
+            <path d="M0 24C240 -8 480 -8 720 24C960 56 1200 56 1440 24V72H0V24Z" fill="currentColor" />
+          </g>
+        </svg>
+      </div>
+      <div className="footer-inner">
+        <div className="page-shell footer-content">
+          <Image src="/assets/nexgenix-logo.svg" alt="NexGenix" width={180} height={130} className="footer-logo" unoptimized />
+          <p className="footer-tagline">Riding the wave of tomorrow</p>
+          <div className="footer-columns">
+            <div><h3>Company</h3><Link href="/about">About</Link><Link href="/careers">Careers</Link><Link href="/work">Press</Link><Link href="/partners">Partners</Link></div>
+            <div><h3>Resources</h3><Link href="/docs">Documentation</Link><Link href="/tutorials">Tutorials</Link><Link href="/support">Support</Link><Link href="/status">Status</Link></div>
+            <div><h3>Connect</h3><div className="social-links">
+              <a href="#facebook" aria-label="Facebook"><Image src="/assets/icons/facebook.svg" alt="" width={20} height={20} className="h-4 w-auto" unoptimized /></a>
+              <a href="#twitter" aria-label="Twitter"><Image src="/assets/icons/x.svg" alt="" width={20} height={20} unoptimized /></a>
+              <a href="#instagram" aria-label="Instagram"><Image src="/assets/icons/instagram.svg" alt="" width={20} height={20} unoptimized /></a>
+              <a href="#linkedin" aria-label="LinkedIn"><Image src="/assets/icons/linkedin.svg" alt="" width={20} height={20} unoptimized /></a>
+              <a href="#github" aria-label="GitHub"><Image src="/assets/icons/github.svg" alt="" width={20} height={20} unoptimized /></a>
+            </div></div>
+          </div>
+          <div className="footer-bottom">© 2026 NexGenix Technologies. Shaping tomorrow, today.</div>
         </div>
-        <div className="footer-bottom">© 2026 NexGenix Technologies. Shaping tomorrow, today.</div>
       </div>
     </footer>
   );

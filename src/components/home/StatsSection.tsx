@@ -24,17 +24,23 @@ const stats = [
 
 export default function StatsSection() {
     return (
-        <section className="mx-auto grid w-full max-w-[1440px] grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {stats.map((stat) => (
-                <article
-                    key={stat.value}
-                    className="flex h-[160px] flex-col items-center justify-center rounded-xl border border-white/20 bg-white/[0.08] text-center text-white shadow-[0_0_16px_rgba(177,111,255,0.12)]"
-                >
-                    <StatIcon type={stat.type} />
-                    <p className="mt-3 text-sm text-white/85">{stat.label}</p>
-                    <h3 className="mt-2 text-xl font-bold">{stat.value}</h3>
-                </article>
-            ))}
+        <section className="home-stats-section relative mx-auto w-full max-w-[1440px]">
+            <div className="home-stats-grid grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                {stats.map((stat) => (
+                    <article
+                        key={stat.value}
+                        className={`home-glass-card home-stat-card flex h-[160px] flex-col items-center justify-center rounded-xl text-center text-white ${
+                            stat.type === "portfolio" ? "home-stat-card--portfolio" : ""
+                        }`}
+                    >
+                        <StatIcon type={stat.type} />
+                        <p className="mt-3 text-sm text-white/85">{stat.label}</p>
+                        <h3 className="mt-2 text-xl font-bold">{stat.value}</h3>
+                    </article>
+                ))}
+            </div>
+
+            <div className="home-stats-separator" aria-hidden="true" />
         </section>
     );
 }
