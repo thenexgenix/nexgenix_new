@@ -16,7 +16,7 @@ export default function Home() {
     <main className="bg-[#19032a]">
       <HeroSection />
 
-      <div className="relative z-10 px-4 py-[140px]">
+      <div className="relative z-10 px-4 py-[96px]">
         <ServicesSection />
       </div>
 
