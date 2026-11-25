@@ -135,22 +135,40 @@ export interface ProjectDetails {
         description: string;
         image: ProjectImage;
     };
-    meta: MetaItem[];
+    /** Some designs omit the four fact cards; an empty array hides that block. */
+    meta?: MetaItem[];
     challenge: NarrativeCard;
     solution: NarrativeCard;
-    responsive: SectionIntro & { image: ProjectImage };
-    designSystem: SectionIntro & {
+
+    /*
+     * Optional sections. A project only defines the blocks that appear in its
+     * design; ProjectDetailPage skips any block that is not provided.
+     * Ainbondu defines every block, so its page is unchanged.
+     */
+    responsive?: SectionIntro & { image: ProjectImage };
+    /**
+     * Mobile-only designs show one centered phone image under the section title,
+     * with no "Mobile Experience" copy. Kept separate from `platforms`.
+     */
+    mobileShowcase?: {
+        title: string;
+        image: ProjectImage;
+        /** Native SVG size, used to preserve the image aspect ratio. */
+        width: number;
+        height: number;
+    };
+    designSystem?: SectionIntro & {
         colors: ColorSwatch[];
         typography: { sample: string; family: string; description: string };
         features: string[];
     };
-    platforms: SectionIntro & { items: PlatformShowcase[] };
-    process: SectionIntro & { steps: ProcessStep[] };
-    journey: JourneyContent;
-    team: TeamContent;
-    collaboration: CollaborationContent;
-    impact: SectionIntro & { stats: ImpactStat[] };
-    testimonial: {
+    platforms?: SectionIntro & { items: PlatformShowcase[] };
+    process?: SectionIntro & { steps: ProcessStep[] };
+    journey?: JourneyContent;
+    team?: TeamContent;
+    collaboration?: CollaborationContent;
+    impact?: SectionIntro & { stats: ImpactStat[] };
+    testimonial?: {
         quote: string;
         /** Number of filled stars (0-5). */
         rating: number;
@@ -159,5 +177,5 @@ export interface ProjectDetails {
         /** Single letter shown in the avatar circle. */
         initial: string;
     };
-    takeaways: SectionIntro & { items: Takeaway[] };
+    takeaways?: SectionIntro & { items: Takeaway[] };
 }

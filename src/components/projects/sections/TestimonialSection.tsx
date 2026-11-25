@@ -3,7 +3,7 @@ import Icon from "../ui/Icons";
 import IconBadge from "../ui/IconBadge";
 
 interface TestimonialSectionProps {
-    testimonial: ProjectDetails["testimonial"];
+    testimonial: NonNullable<ProjectDetails["testimonial"]>;
 }
 
 const MAX_RATING = 5;

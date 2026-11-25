@@ -3,7 +3,7 @@ import ChainConnector from "../ui/ChainConnector";
 import SectionHeading from "../ui/SectionHeading";
 
 interface JourneySectionProps {
-    journey: ProjectDetails["journey"];
+    journey: NonNullable<ProjectDetails["journey"]>;
 }
 
 /**

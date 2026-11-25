@@ -2,7 +2,7 @@ import type { ProjectDetails } from "../types";
 import Icon from "../ui/Icons";
 
 interface CollaborationSectionProps {
-    collaboration: ProjectDetails["collaboration"];
+    collaboration: NonNullable<ProjectDetails["collaboration"]>;
 }
 
 /** "Our Collaborative Journey" - a blue-tinted card with a row of stat tiles. */

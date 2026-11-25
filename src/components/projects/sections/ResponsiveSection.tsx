@@ -3,7 +3,7 @@ import ImageSlot from "../ui/ImageSlot";
 import SectionHeading from "../ui/SectionHeading";
 
 interface ResponsiveSectionProps {
-    responsive: ProjectDetails["responsive"];
+    responsive: NonNullable<ProjectDetails["responsive"]>;
 }
 
 /** "Responsive Design" - one composite mockup showing all device sizes. */

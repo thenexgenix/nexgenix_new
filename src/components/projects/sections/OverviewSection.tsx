@@ -68,30 +68,37 @@ export default function OverviewSection({ meta, challenge, solution }: OverviewS
             </div>
 
             <div className="page-shell">
-                <FadingDivider />
+                {/* Some designs skip the fact cards; hide the dividers with them. */}
+                {meta.length > 0 && (
+                    <>
+                        <FadingDivider />
 
-                {/* Fact cards */}
-                <dl className="mt-[43px] grid gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
-                    {meta.map((item) => (
-                        <div
-                            key={item.label}
-                            className="min-h-[164px] rounded-[18px] border border-white/10 bg-white/[0.04] px-6 pt-5"
-                        >
-                            <span aria-hidden="true" className="block text-[40px] leading-[48px]">
-                                {item.emoji}
-                            </span>
-                            <dt className="mt-[18px] text-[13px] leading-5 text-white/50">{item.label}</dt>
-                            <dd className="mt-[15px] text-lg font-semibold leading-7 text-white">
-                                {item.value}
-                            </dd>
-                        </div>
-                    ))}
-                </dl>
+                        {/* Fact cards */}
+                        <dl className="mt-[43px] grid gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+                            {meta.map((item) => (
+                                <div
+                                    key={item.label}
+                                    className="min-h-[164px] rounded-[18px] border border-white/10 bg-white/[0.04] px-6 pt-5"
+                                >
+                                    <span aria-hidden="true" className="block text-[40px] leading-[48px]">
+                                        {item.emoji}
+                                    </span>
+                                    <dt className="mt-[18px] text-[13px] leading-5 text-white/50">
+                                        {item.label}
+                                    </dt>
+                                    <dd className="mt-[15px] text-lg font-semibold leading-7 text-white">
+                                        {item.value}
+                                    </dd>
+                                </div>
+                            ))}
+                        </dl>
 
-                <FadingDivider className="mt-7" />
+                        <FadingDivider className="mt-7" />
+                    </>
+                )}
 
                 {/* Challenge / Solution */}
-                <div className="mt-[37px] grid gap-8 lg:grid-cols-2">
+                <div className={meta.length > 0 ? "mt-[37px] grid gap-8 lg:grid-cols-2" : "grid gap-8 lg:grid-cols-2"}>
                     <NarrativePanel card={challenge} />
                     <NarrativePanel card={solution} glow />
                 </div>

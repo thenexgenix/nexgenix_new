@@ -3,7 +3,8 @@ import SectionBadge, { type SectionBadgeTone } from "./SectionBadge";
 
 interface SectionHeadingProps {
     title: string;
-    subtitle: string;
+    /** Omit on sections that only show a title and an image. */
+    subtitle?: string;
     /** Id referenced by the parent section's aria-labelledby. */
     id?: string;
     /** Optional pill shown above the title. */
@@ -46,9 +47,11 @@ export default function SectionHeading({
                     </>
                 )}
             </h2>
-            <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/55 sm:text-[18.6px]">
-                {subtitle}
-            </p>
+            {subtitle && (
+                <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/55 sm:text-[18.6px]">
+                    {subtitle}
+                </p>
+            )}
         </header>
     );
 }

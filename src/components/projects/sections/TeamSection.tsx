@@ -4,7 +4,7 @@ import ImageSlot from "../ui/ImageSlot";
 import SectionHeading from "../ui/SectionHeading";
 
 interface TeamSectionProps {
-    team: ProjectDetails["team"];
+    team: NonNullable<ProjectDetails["team"]>;
 }
 
 /** Green gradient clipped to the glyphs, same look as the hero wordmark. */

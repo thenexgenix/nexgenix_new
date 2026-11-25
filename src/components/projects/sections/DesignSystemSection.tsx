@@ -3,7 +3,7 @@ import type { ProjectDetails } from "../types";
 import SectionHeading from "../ui/SectionHeading";
 
 interface DesignSystemSectionProps {
-    designSystem: ProjectDetails["designSystem"];
+    designSystem: NonNullable<ProjectDetails["designSystem"]>;
 }
 
 /** Shared look of the three cards. */
