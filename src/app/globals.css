@@ -8,6 +8,10 @@
   font-display: swap;
 }
 
+.font-bengali {
+  font-family: "Noto Sans Bengali", "Nirmala UI", "Vrinda", sans-serif;
+}
+
 /* App-wide design tokens */
 :root {
   --page-background: #19032a;
@@ -42,6 +46,7 @@ body {
   overflow-x: clip;
   background: var(--page-background);
   color: var(--page-foreground);
+  font-family: Inter, Arial, sans-serif;
 }
 
 a {
